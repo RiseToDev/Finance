@@ -9,6 +9,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.*;
 
 import com.android.volley.RequestQueue;
@@ -18,6 +19,13 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class MainActivity extends AppCompatActivity
@@ -31,31 +39,70 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(view ->
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show()
         );
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        Button refreshButton = (Button) findViewById(R.id.refreshButton);
+        Button refreshButton = findViewById(R.id.refreshButton);
         refreshButton.setOnClickListener(view -> {
-            currencyListView = (ListView) findViewById(R.id.currencyListView);
+            currencyListView = findViewById(R.id.currencyListView);
             StringRequest request = new StringRequest(url,
-                    this::parseJsonData,
+                    this::parseJsonData_Currency,
                     volleyError -> Toast.makeText(this,
                             "Something goes wrong!", Toast.LENGTH_SHORT).show());
-
             RequestQueue rQueue = Volley.newRequestQueue(this);
             rQueue.add(request);
         });
+
+        /*---------------------------------------------------------Spinner - currencyList-----------------------------------------*/
+
+
+
+
     }
 
-    private void parseJsonData(String jsonString) {
+
+    ArrayList<String> listOfCurrencies = new ArrayList<>();
+
+    private void getlistOfCurrencies() {
+        try (BufferedReader br = new BufferedReader(new FileReader("listOfCurrencies.txt"))) {
+            String currency;
+            while ((currency = br.readLine()) != null) {
+                listOfCurrencies.add(currency);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void setlistOfCurrencies() {
+        try {
+            FileOutputStream writeCurrencies = openFileOutput("listOfCurrencies.txt", MODE_PRIVATE);
+            for (String o : listOfCurrenciesForFile) {
+                writeCurrencies.write(o.toString().getBytes());
+            }
+            writeCurrencies.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    ArrayList<String> listOfCurrenciesForFile = new ArrayList<>();
+
+    /*---------------------------------------------------------Spinner - currencyList - END------------------------------------*/
+    private void parseJsonData_Currency(String jsonString) {
         try {
             JSONObject object = new JSONObject(jsonString);
             String str = object.getString("rates");
@@ -65,12 +112,36 @@ public class MainActivity extends AppCompatActivity
             String[] values = str.split(",");
             for (String o : values) {
                 o = o.replaceAll("[\"{}]", "");
-                String[] twoParts = o.trim().split(":");
+                String[] currency_value = o.trim().split(":");
                 map = new HashMap<>();
-                map.put("Currency", twoParts[0]);
-                map.put("Value", twoParts[1]);
+                map.put("Currency", currency_value[0]);
+                listOfCurrenciesForFile.add(currency_value[0]);
+                map.put("Value", currency_value[1]);
                 currencyList.add(map);
             }
+
+            ArrayAdapter<String> adapterForSpinner = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, listOfCurrenciesForFile);
+            adapterForSpinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            Spinner currencyListSpinner = findViewById(R.id.currencyList);
+            currencyListSpinner.setAdapter(adapterForSpinner);
+            currencyListSpinner.setPrompt("Set currency");
+
+
+            currencyListSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+                    currencyListSpinner.setSelection(position);
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            });
+
+
+            setlistOfCurrencies();
+            getlistOfCurrencies();
             SimpleAdapter adapter = new SimpleAdapter(this, currencyList, android.R.layout.simple_list_item_2,
                     new String[]{"Currency", "Value"},
                     new int[]{android.R.id.text1, android.R.id.text2});
@@ -80,9 +151,10 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -132,7 +204,7 @@ public class MainActivity extends AppCompatActivity
 
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
