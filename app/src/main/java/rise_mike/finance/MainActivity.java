@@ -3,43 +3,81 @@ package rise_mike.finance;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.*;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.*;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private ListView currencyListView;
+    private String url = "https://v3.exchangerate-api.com/bulk/eea141b9e02d415609d257a1/USD";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        fab.setOnClickListener(view ->
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+                        .setAction("Action", null).show()
+        );
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        Button refreshButton = (Button) findViewById(R.id.refreshButton);
+        refreshButton.setOnClickListener(view -> {
+            currencyListView = (ListView) findViewById(R.id.currencyListView);
+            StringRequest request = new StringRequest(url,
+                    this::parseJsonData,
+                    volleyError -> Toast.makeText(this,
+                            "Something goes wrong!", Toast.LENGTH_SHORT).show());
+
+            RequestQueue rQueue = Volley.newRequestQueue(this);
+            rQueue.add(request);
+        });
+    }
+
+    private void parseJsonData(String jsonString) {
+        try {
+            JSONObject object = new JSONObject(jsonString);
+            String str = object.getString("rates");
+            List<HashMap<String, String>> currencyList = new ArrayList<>();
+            HashMap<String, String> map;
+
+            String[] values = str.split(",");
+            for (String o : values) {
+                o = o.replaceAll("[\"{}]", "");
+                String[] twoParts = o.trim().split(":");
+                map = new HashMap<>();
+                map.put("Currency", twoParts[0]);
+                map.put("Value", twoParts[1]);
+                currencyList.add(map);
+            }
+            SimpleAdapter adapter = new SimpleAdapter(this, currencyList, android.R.layout.simple_list_item_2,
+                    new String[]{"Currency", "Value"},
+                    new int[]{android.R.id.text1, android.R.id.text2});
+            currencyListView.setAdapter(adapter);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
