@@ -64,35 +64,29 @@ public class MainActivity extends AppCompatActivity
         /*---------------------------------------------------------Spinner - currencyList-----------------------------------------*/
 
 
-
-
     }
 
 
     ArrayList<String> listOfCurrencies = new ArrayList<>();
 
-    private void getlistOfCurrencies() {
+    private void getListOfCurrencies() {
         try (BufferedReader br = new BufferedReader(new FileReader("listOfCurrencies.txt"))) {
             String currency;
             while ((currency = br.readLine()) != null) {
                 listOfCurrencies.add(currency);
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private void setlistOfCurrencies() {
+    private void setListOfCurrencies() {
         try {
             FileOutputStream writeCurrencies = openFileOutput("listOfCurrencies.txt", MODE_PRIVATE);
             for (String o : listOfCurrenciesForFile) {
-                writeCurrencies.write(o.toString().getBytes());
+                writeCurrencies.write(o.getBytes());
             }
             writeCurrencies.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -140,8 +134,8 @@ public class MainActivity extends AppCompatActivity
             });
 
 
-            setlistOfCurrencies();
-            getlistOfCurrencies();
+            setListOfCurrencies();
+            getListOfCurrencies();
             SimpleAdapter adapter = new SimpleAdapter(this, currencyList, android.R.layout.simple_list_item_2,
                     new String[]{"Currency", "Value"},
                     new int[]{android.R.id.text1, android.R.id.text2});
