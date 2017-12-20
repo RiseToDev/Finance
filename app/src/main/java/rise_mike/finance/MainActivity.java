@@ -1,31 +1,18 @@
 package rise_mike.finance;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.*;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class MainActivity extends AppCompatActivity
@@ -37,9 +24,9 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.content);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
+       /* FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(view ->
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show()
@@ -59,7 +46,7 @@ public class MainActivity extends AppCompatActivity
                             "Something goes wrong!", Toast.LENGTH_SHORT).show());
             RequestQueue rQueue = Volley.newRequestQueue(this);
             rQueue.add(request);
-        });
+        });*/
 
         /*---------------------------------------------------------Spinner - currencyList-----------------------------------------*/
 
@@ -96,7 +83,7 @@ public class MainActivity extends AppCompatActivity
     ArrayList<String> listOfCurrenciesForFile = new ArrayList<>();
 
     /*---------------------------------------------------------Spinner - currencyList - END------------------------------------*/
-    private void parseJsonData_Currency(String jsonString) {
+   /* private void parseJsonData_Currency(String jsonString) {
         try {
             JSONObject object = new JSONObject(jsonString);
             String str = object.getString("rates");
@@ -143,7 +130,7 @@ public class MainActivity extends AppCompatActivity
         } catch (JSONException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
 
     @Override
