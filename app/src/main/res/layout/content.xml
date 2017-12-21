@@ -4,36 +4,53 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
+    android:background="@color/ic_launcher_background"
 app:layout_behavior="@string/appbar_scrolling_view_behavior"
-tools:context="rise_mike.finance.MainActivity"
-tools:showIn="@layout/app_bar_main">
+tools:context="rise_mike.finance.MainActivity">
 
-    <GridLayout
-        android:layout_width="368dp"
-        android:layout_height="551dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="180dp"
-            android:layout_height="189dp"
-            app:srcCompat="@mipmap/ic_launcher" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true">
 
-        <ImageButton
-            android:id="@+id/imageButton2"
-            android:layout_width="96dp"
-            android:layout_height="100dp"
-            android:layout_column="0"
-            android:layout_row="28"
-            app:srcCompat="@drawable/ic_menu_manage" />
+            <ImageButton
+                android:id="@+id/imageButton10"
+                android:layout_width="30pt"
+                android:layout_height="30pt"
 
-        <ImageButton
-            android:id="@+id/imageButton3"
-            android:layout_width="165dp"
-            android:layout_height="186dp"
-            android:layout_column="1"
-            android:layout_row="0"
-            app:srcCompat="@mipmap/ic_launcher_foreground" />
-    </GridLayout>
+                android:layout_marginStart="5pt"
+                android:layout_marginTop="5pt"
+                android:background="@drawable/icon_currency_exchange" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="30pt"
+                android:layout_height="30pt"
+                android:layout_alignParentEnd="true"
+                android:layout_alignTop="@+id/imageButton10"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/icon_currency_exchange" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/imageButton10"
+                android:layout_below="@+id/imageButton10"
+                android:text="Currency" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/textView2"
+                android:layout_below="@+id/textView2"
+                android:text="exchange" />
+        </RelativeLayout>
+    </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
