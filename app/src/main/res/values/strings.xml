@@ -7,4 +7,5 @@
     <string name="refresh_currency_rates">refresh currency rates</string>
     <string name="android_studio_android_com">android.studio@android.com</string>
     <string name="android_studio">Android Studio</string>
+    <string name="exchange_button">Exchange</string>
 </resources>

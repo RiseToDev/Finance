@@ -1,56 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-    android:background="@color/ic_launcher_background"
-app:layout_behavior="@string/appbar_scrolling_view_behavior"
-tools:context="rise_mike.finance.MainActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="rise_mike.finance.Content">
 
-            <ImageButton
-                android:id="@+id/imageButton10"
-                android:layout_width="30pt"
-                android:layout_height="30pt"
+    <GridLayout
+        android:id="@+id/gridFunctions"
+        android:layout_width="0dp"
+        android:layout_height="85dp"
+        android:layout_marginBottom="350dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:columnCount="5"
+        android:rowCount="3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
-                android:layout_marginStart="5pt"
-                android:layout_marginTop="5pt"
-                android:background="@drawable/icon_currency_exchange" />
 
-            <Button
-                android:id="@+id/button"
-                android:layout_width="30pt"
-                android:layout_height="30pt"
-                android:layout_alignParentEnd="true"
-                android:layout_alignTop="@+id/imageButton10"
-                android:layout_marginEnd="30dp"
-                android:background="@drawable/icon_currency_exchange" />
+        <at.markushi.ui.CircleButton
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:padding="10dp"
+            android:src="@drawable/exchange"
+            app:cb_color="@color/ic_launcher_background" />
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/imageButton10"
-                android:layout_below="@+id/imageButton10"
-                android:text="Currency" />
 
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/textView2"
-                android:layout_below="@+id/textView2"
-                android:text="exchange" />
-        </RelativeLayout>
-    </RelativeLayout>
+        <android.support.v7.widget.ButtonBarLayout
+            android:layout_width="70dp"
+            android:layout_height="match_parent" />
+
+        <at.markushi.ui.CircleButton
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:padding="10dp"
+            android:src="@drawable/exchange"
+            app:cb_color="@color/ic_launcher_background" />
+
+        <android.support.v7.widget.ButtonBarLayout
+            android:layout_width="70dp"
+            android:layout_height="match_parent" />
+
+        <at.markushi.ui.CircleButton
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:padding="10dp"
+            android:src="@drawable/exchange"
+            app:cb_color="@color/ic_launcher_background" />
+
+
+
+
+
+    </GridLayout>
+
 </android.support.constraint.ConstraintLayout>

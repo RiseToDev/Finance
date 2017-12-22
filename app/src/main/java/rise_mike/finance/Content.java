@@ -15,7 +15,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
-public class MainActivity extends AppCompatActivity
+public class Content extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private ListView currencyListView;
