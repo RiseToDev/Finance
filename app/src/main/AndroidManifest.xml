@@ -11,17 +11,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Content"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:name=".StartUp"
+            android:theme="@style/AppTheme.StartUp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CurrencyExchange" />
-        <activity android:name=".CurrencyRates"></activity>
+
+        <activity
+            android:name=".Content"
+            android:label="@string/app_name">
+        </activity>
+
     </application>
 
 </manifest>

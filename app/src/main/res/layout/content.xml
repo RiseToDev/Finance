@@ -5,62 +5,166 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:background="@drawable/app_background"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="rise_mike.finance.Content">
 
+
     <GridLayout
-        android:id="@+id/gridFunctions"
-        android:layout_width="0dp"
-        android:layout_height="85dp"
-        android:layout_marginBottom="350dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:columnCount="5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:columnCount="3"
         android:rowCount="3"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent">
 
+        <LinearLayout
+            android:layout_width="130dp"
+            android:layout_height="150dp"
+            android:orientation="vertical">
 
-        <at.markushi.ui.CircleButton
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:padding="10dp"
-            android:src="@drawable/exchange"
-            app:cb_color="@color/ic_launcher_background" />
+            <at.markushi.ui.CircleButton
+                android:id="@+id/currencyRatesButton"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:src="@drawable/icon_currency_rates" />
 
+            <TextView
+                android:id="@+id/currencyRatesText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Currency rates"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
+                android:textColor="@color/primaryDarkColor"
+                android:textSize="15sp" />
 
-        <android.support.v7.widget.ButtonBarLayout
-            android:layout_width="70dp"
-            android:layout_height="match_parent" />
+        </LinearLayout>
 
-        <at.markushi.ui.CircleButton
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:padding="10dp"
-            android:src="@drawable/exchange"
-            app:cb_color="@color/ic_launcher_background" />
+        <LinearLayout
+            android:layout_width="130dp"
+            android:layout_height="150dp"
+            android:orientation="vertical">
 
-        <android.support.v7.widget.ButtonBarLayout
-            android:layout_width="70dp"
-            android:layout_height="match_parent" />
+            <at.markushi.ui.CircleButton
+                android:id="@+id/currencyExchangeButton"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:src="@drawable/icon_currency_exchange" />
 
-        <at.markushi.ui.CircleButton
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:padding="10dp"
-            android:src="@drawable/exchange"
-            app:cb_color="@color/ic_launcher_background" />
+            <TextView
+                android:id="@+id/currencyExchangeText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Currency exchange"
+                android:textAlignment="center"
+                android:textColor="@color/primaryDarkColor"
+                android:textSize="15sp" />
 
+        </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="130dp"
+            android:layout_height="150dp"
+            android:orientation="vertical">
 
+            <at.markushi.ui.CircleButton
+                android:id="@+id/settingsButton"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:src="@drawable/icon_settings" />
 
+            <TextView
+                android:id="@+id/settingsText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Settings"
+                android:textAlignment="center"
+                android:textColor="@color/primaryDarkColor"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="130dp"
+            android:layout_height="150dp"
+            android:orientation="vertical">
+
+            <at.markushi.ui.CircleButton
+                android:id="@+id/template0"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:src="@drawable/icon_currency_exchange" />
+
+            <TextView
+                android:id="@+id/template1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="template"
+                android:textAlignment="center"
+                android:textColor="@color/primaryDarkColor"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="130dp"
+            android:layout_height="150dp"
+            android:orientation="vertical">
+
+            <at.markushi.ui.CircleButton
+                android:id="@+id/template2"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:src="@drawable/icon_currency_exchange" />
+
+            <TextView
+                android:id="@+id/template3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="template"
+                android:textAlignment="center"
+                android:textColor="@color/primaryDarkColor"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="130dp"
+            android:layout_height="150dp"
+            android:orientation="vertical">
+
+            <at.markushi.ui.CircleButton
+                android:id="@+id/template4"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:src="@drawable/icon_currency_exchange" />
+
+            <TextView
+                android:id="@+id/template5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="template"
+                android:textAlignment="center"
+                android:textColor="@color/primaryDarkColor"
+                android:textSize="15sp" />
+
+        </LinearLayout>
 
     </GridLayout>
-
 </android.support.constraint.ConstraintLayout>
