@@ -20,6 +20,6 @@ public class StartUp extends AppCompatActivity {
             Intent intent = new Intent(StartUp.this, Content.class);
             startActivity(intent);
             finish();
-        }, 4000);
+        }, 2000);
     }
 }

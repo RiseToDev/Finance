@@ -6,4 +6,7 @@
     <string name="action_settings">Action settings</string>
     <string name="android_studio_android_com">android.studio@android.com</string>
     <string name="android_studio">Android Studio</string>
+    <string name="rates">Rates</string>
+    <string name="exchange">Exchange</string>
+    <string name="settings">Settings</string>
 </resources>
