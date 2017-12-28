@@ -9,10 +9,11 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme" >
         <activity
             android:name=".StartUp"
-            android:theme="@style/AppTheme.StartUp">
+            android:theme="@style/AppTheme.StartUp"
+            android:screenOrientation="user">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,7 +23,8 @@
 
         <activity
             android:name=".Content"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:screenOrientation="user">
         </activity>
 
     </application>
