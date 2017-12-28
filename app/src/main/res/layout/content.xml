@@ -10,45 +10,46 @@
     tools:context="rise_mike.finance.Content">
 
     <android.support.constraint.Guideline
-        android:id="@+id/guideline"
+        android:id="@+id/guideline5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.07" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/guideline2"
+        android:id="@+id/guideline6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.93" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/guideline3"
+        android:id="@+id/guideline7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.85" />
+        app:layout_constraintGuide_percent="0.05" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.05" />
+        app:layout_constraintGuide_percent="0.85" />
 
     <at.markushi.ui.CircleButton
         android:id="@+id/ratesButton"
         android:layout_width="0dp"
-        android:layout_height="75dp"
+        android:layout_height="85dp"
+        android:padding="10dp"
         android:src="@drawable/icon_rates"
         app:cb_color="@android:color/white"
         app:layout_constraintDimensionRatio="w,1:1"
         app:layout_constraintEnd_toStartOf="@+id/exchangeButton"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/guideline8" />
+        app:layout_constraintStart_toStartOf="@+id/guideline5"
+        app:layout_constraintTop_toTopOf="@+id/guideline7" />
 
     <TextView
         android:id="@+id/ratesText"
@@ -56,7 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="4dp"
         android:text="@string/rates"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Caption"
@@ -70,15 +71,15 @@
     <at.markushi.ui.CircleButton
         android:id="@+id/exchangeButton"
         android:layout_width="0dp"
-        android:layout_height="75dp"
+        android:layout_height="85dp"
+        android:padding="10dp"
         android:src="@drawable/icon_exchange"
-        android:padding="2dp"
         app:cb_color="@android:color/white"
         app:layout_constraintDimensionRatio="w,1:1"
         app:layout_constraintEnd_toStartOf="@+id/settingsButton"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/ratesButton"
-        app:layout_constraintTop_toTopOf="@+id/guideline8" />
+        app:layout_constraintTop_toTopOf="@+id/guideline7" />
 
     <TextView
         android:id="@+id/exchangeText"
@@ -86,7 +87,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="4dp"
         android:text="@string/exchange"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Caption"
@@ -100,14 +101,15 @@
     <at.markushi.ui.CircleButton
         android:id="@+id/settingsButton"
         android:layout_width="0dp"
-        android:layout_height="75dp"
+        android:layout_height="85dp"
+        android:padding="10dp"
         android:src="@drawable/icon_settings"
         app:cb_color="@android:color/white"
         app:layout_constraintDimensionRatio="w,1:1"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintEnd_toStartOf="@+id/guideline6"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/exchangeButton"
-        app:layout_constraintTop_toTopOf="@+id/guideline8" />
+        app:layout_constraintTop_toTopOf="@+id/guideline7" />
 
     <TextView
         android:id="@+id/settingsText"
@@ -115,7 +117,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="4dp"
         android:text="@string/settings"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Caption"
@@ -129,14 +131,15 @@
     <at.markushi.ui.CircleButton
         android:id="@+id/template1"
         android:layout_width="0dp"
-        android:layout_height="75dp"
+        android:layout_height="85dp"
+        android:padding="10dp"
         app:cb_color="@android:color/white"
-        app:layout_constraintBottom_toTopOf="@+id/currencyExchangeButton8"
+        app:layout_constraintBottom_toTopOf="@+id/template4"
         app:layout_constraintDimensionRatio="w,1:1"
-        app:layout_constraintEnd_toStartOf="@+id/currencyExchangeButton6"
+        app:layout_constraintEnd_toStartOf="@+id/template2"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="@+id/guideline5"
         app:layout_constraintTop_toBottomOf="@+id/ratesButton" />
 
     <TextView
@@ -145,7 +148,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="4dp"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Caption"
         android:textColor="@android:color/white"
@@ -157,13 +160,14 @@
         tools:text="template1" />
 
     <at.markushi.ui.CircleButton
-        android:id="@+id/currencyExchangeButton6"
+        android:id="@+id/template2"
         android:layout_width="0dp"
-        android:layout_height="75dp"
+        android:layout_height="85dp"
+        android:padding="10dp"
         app:cb_color="@android:color/white"
-        app:layout_constraintBottom_toTopOf="@+id/currencyExchangeButton9"
+        app:layout_constraintBottom_toTopOf="@+id/template5"
         app:layout_constraintDimensionRatio="w,1:1"
-        app:layout_constraintEnd_toStartOf="@+id/currencyExchangeButton7"
+        app:layout_constraintEnd_toStartOf="@+id/template3"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/template1"
         app:layout_constraintTop_toBottomOf="@+id/exchangeButton" />
@@ -174,26 +178,28 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="4dp"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Caption"
         android:textColor="@android:color/white"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/currencyExchangeButton6"
-        app:layout_constraintStart_toStartOf="@+id/currencyExchangeButton6"
-        app:layout_constraintTop_toBottomOf="@+id/currencyExchangeButton6"
+        app:layout_constraintEnd_toEndOf="@+id/template2"
+        app:layout_constraintStart_toStartOf="@+id/template2"
+        app:layout_constraintTop_toBottomOf="@+id/template2"
         tools:text="template2" />
 
     <at.markushi.ui.CircleButton
-        android:id="@+id/currencyExchangeButton7"
+        android:id="@+id/template3"
         android:layout_width="0dp"
-        android:layout_height="75dp"
+        android:layout_height="85dp"
+        android:padding="10dp"
         app:cb_color="@android:color/white"
-        app:layout_constraintBottom_toTopOf="@+id/currencyExchangeButton10"
+        app:layout_constraintBottom_toTopOf="@+id/template6"
         app:layout_constraintDimensionRatio="w,1:1"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintStart_toEndOf="@+id/currencyExchangeButton6"
+        app:layout_constraintEnd_toStartOf="@+id/guideline6"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/template2"
         app:layout_constraintTop_toBottomOf="@+id/settingsButton" />
 
     <TextView
@@ -202,28 +208,29 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="4dp"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Caption"
         android:textColor="@android:color/white"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/currencyExchangeButton7"
-        app:layout_constraintStart_toStartOf="@+id/currencyExchangeButton7"
-        app:layout_constraintTop_toBottomOf="@+id/currencyExchangeButton7"
+        app:layout_constraintEnd_toEndOf="@+id/template3"
+        app:layout_constraintStart_toStartOf="@+id/template3"
+        app:layout_constraintTop_toBottomOf="@+id/template3"
         tools:text="template3" />
 
     <at.markushi.ui.CircleButton
-        android:id="@+id/currencyExchangeButton8"
+        android:id="@+id/template4"
         android:layout_width="0dp"
-        android:layout_height="75dp"
+        android:layout_height="85dp"
+        android:padding="10dp"
         app:cb_color="@android:color/white"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintBottom_toTopOf="@+id/guideline8"
         app:layout_constraintDimensionRatio="w,1:1"
-        app:layout_constraintEnd_toStartOf="@+id/currencyExchangeButton9"
+        app:layout_constraintEnd_toStartOf="@+id/template5"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="@+id/guideline5"
         app:layout_constraintTop_toBottomOf="@+id/template1" />
 
     <TextView
@@ -232,28 +239,29 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="4dp"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Caption"
         android:textColor="@android:color/white"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/currencyExchangeButton8"
-        app:layout_constraintStart_toStartOf="@+id/currencyExchangeButton8"
-        app:layout_constraintTop_toBottomOf="@+id/currencyExchangeButton8"
+        app:layout_constraintEnd_toEndOf="@+id/template4"
+        app:layout_constraintStart_toStartOf="@+id/template4"
+        app:layout_constraintTop_toBottomOf="@+id/template4"
         tools:text="template4" />
 
     <at.markushi.ui.CircleButton
-        android:id="@+id/currencyExchangeButton9"
+        android:id="@+id/template5"
         android:layout_width="0dp"
-        android:layout_height="75dp"
+        android:layout_height="85dp"
+        android:padding="10dp"
         app:cb_color="@android:color/white"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintBottom_toTopOf="@+id/guideline8"
         app:layout_constraintDimensionRatio="w,1:1"
-        app:layout_constraintEnd_toStartOf="@+id/currencyExchangeButton10"
+        app:layout_constraintEnd_toStartOf="@+id/template6"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/currencyExchangeButton8"
-        app:layout_constraintTop_toBottomOf="@+id/currencyExchangeButton6" />
+        app:layout_constraintStart_toEndOf="@+id/template4"
+        app:layout_constraintTop_toBottomOf="@+id/template2" />
 
     <TextView
         android:id="@+id/temp5"
@@ -261,28 +269,29 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="4dp"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Caption"
         android:textColor="@android:color/white"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/currencyExchangeButton9"
-        app:layout_constraintStart_toStartOf="@+id/currencyExchangeButton9"
-        app:layout_constraintTop_toBottomOf="@+id/currencyExchangeButton9"
+        app:layout_constraintEnd_toEndOf="@+id/template5"
+        app:layout_constraintStart_toStartOf="@+id/template5"
+        app:layout_constraintTop_toBottomOf="@+id/template5"
         tools:text="template5" />
 
     <at.markushi.ui.CircleButton
-        android:id="@+id/currencyExchangeButton10"
+        android:id="@+id/template6"
         android:layout_width="0dp"
-        android:layout_height="75dp"
+        android:layout_height="85dp"
+        android:padding="10dp"
         app:cb_color="@android:color/white"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintBottom_toTopOf="@+id/guideline8"
         app:layout_constraintDimensionRatio="w,1:1"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintEnd_toStartOf="@+id/guideline6"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/currencyExchangeButton9"
-        app:layout_constraintTop_toBottomOf="@+id/currencyExchangeButton7" />
+        app:layout_constraintStart_toEndOf="@+id/template5"
+        app:layout_constraintTop_toBottomOf="@+id/template3" />
 
     <TextView
         android:id="@+id/temp6"
@@ -290,15 +299,15 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="4dp"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Caption"
         android:textColor="@android:color/white"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/currencyExchangeButton10"
-        app:layout_constraintStart_toStartOf="@+id/currencyExchangeButton10"
-        app:layout_constraintTop_toBottomOf="@+id/currencyExchangeButton10"
+        app:layout_constraintEnd_toEndOf="@+id/template6"
+        app:layout_constraintStart_toStartOf="@+id/template6"
+        app:layout_constraintTop_toBottomOf="@+id/template6"
         tools:text="template6" />
 
 </android.support.constraint.ConstraintLayout>
