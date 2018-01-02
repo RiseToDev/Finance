@@ -3,7 +3,7 @@ package rise_mike.finance;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class CurrencyExchange extends AppCompatActivity {
+public class CurrencyExchanges extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

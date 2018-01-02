@@ -95,7 +95,7 @@ public class Content extends AppCompatActivity
                 o = o.replaceAll("[\"{}]", "");
                 String[] currency_value = o.trim().split(":");
                 map = new HashMap<>();
-                map.put("Currency", currency_value[0]);
+                map.put("CurrencyRate", currency_value[0]);
                 listOfCurrenciesForFile.add(currency_value[0]);
                 map.put("Value", currency_value[1]);
                 currencyList.add(map);
@@ -124,7 +124,7 @@ public class Content extends AppCompatActivity
             setListOfCurrencies();
             getListOfCurrencies();
             SimpleAdapter adapter = new SimpleAdapter(this, currencyList, android.R.layout.simple_list_item_2,
-                    new String[]{"Currency", "Value"},
+                    new String[]{"CurrencyRate", "Value"},
                     new int[]{android.R.id.text1, android.R.id.text2});
             currencyListView.setAdapter(adapter);
         } catch (JSONException e) {
