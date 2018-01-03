@@ -3,11 +3,11 @@ package rise_mike.finance;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class CurrencyExchanges extends AppCompatActivity {
+public class Exchange extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.currency_exchange);
+        setContentView(R.layout.exchange);
     }
 }

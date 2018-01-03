@@ -17,7 +17,7 @@ public class StartUp extends AppCompatActivity {
         setContentView(R.layout.startup);
 
         new Handler().postDelayed(() -> {
-            Intent intent = new Intent(StartUp.this, Content.class);
+            Intent intent = new Intent(StartUp.this, MainActivity.class);
             startActivity(intent);
             finish();
         }, 2500);

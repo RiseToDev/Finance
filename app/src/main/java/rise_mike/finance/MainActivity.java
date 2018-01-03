@@ -1,30 +1,52 @@
 package rise_mike.finance;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.*;
+import android.widget.ListView;
 
 import java.io.BufferedReader;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
 
-public class Content extends AppCompatActivity
+import at.markushi.ui.CircleButton;
+
+public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private ActionBarDrawerToggle toggle;
     private ListView currencyListView;
     private String url = "https://v3.exchangerate-api.com/bulk/eea141b9e02d415609d257a1/USD";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.content);
+        setContentView(R.layout.activity_main);
+
+        Toolbar toolbar = findViewById(R.id.toolbar_content);
+        setSupportActionBar(toolbar);
+
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        toggle = new ActionBarDrawerToggle(this, drawer,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        CircleButton ratesButton = findViewById(R.id.rates_button);
+        ratesButton.setOnClickListener(view -> {
+            Intent intent = new Intent(this, Rates.class);
+            startActivity(intent);
+        });
 
        /* FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(view ->
@@ -41,7 +63,7 @@ public class Content extends AppCompatActivity
         refreshButton.setOnClickListener(view -> {
             currencyListView = findViewById(R.id.currencyListView);
             StringRequest request = new StringRequest(url,
-                    this::parseJsonData_Currency,
+                    this::parseJsonDataCurrency,
                     volleyError -> Toast.makeText(this,
                             "Something goes wrong!", Toast.LENGTH_SHORT).show());
             RequestQueue rQueue = Volley.newRequestQueue(this);
@@ -83,7 +105,7 @@ public class Content extends AppCompatActivity
     ArrayList<String> listOfCurrenciesForFile = new ArrayList<>();
 
     /*---------------------------------------------------------Spinner - currencyList - END------------------------------------*/
-   /* private void parseJsonData_Currency(String jsonString) {
+   /* private void parseJsonDataCurrency(String jsonString) {
         try {
             JSONObject object = new JSONObject(jsonString);
             String str = object.getString("rates");
@@ -95,7 +117,7 @@ public class Content extends AppCompatActivity
                 o = o.replaceAll("[\"{}]", "");
                 String[] currency_value = o.trim().split(":");
                 map = new HashMap<>();
-                map.put("CurrencyRate", currency_value[0]);
+                map.put("Currency", currency_value[0]);
                 listOfCurrenciesForFile.add(currency_value[0]);
                 map.put("Value", currency_value[1]);
                 currencyList.add(map);
@@ -124,7 +146,7 @@ public class Content extends AppCompatActivity
             setListOfCurrencies();
             getListOfCurrencies();
             SimpleAdapter adapter = new SimpleAdapter(this, currencyList, android.R.layout.simple_list_item_2,
-                    new String[]{"CurrencyRate", "Value"},
+                    new String[]{"Currency", "Value"},
                     new int[]{android.R.id.text1, android.R.id.text2});
             currencyListView.setAdapter(adapter);
         } catch (JSONException e) {
@@ -158,7 +180,9 @@ public class Content extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (toggle.onOptionsItemSelected(item)) {
+            return true;
+        } else if (id == R.id.action_settings) {
             return true;
         }
 
