@@ -6,30 +6,40 @@ package rise_mike.finance;
 
 public class RatesItem {
     private String name;
-    private String rate;
-    private String primaryCurrency;
+    private Double rate;
+    private String fullName;
+    private int flag;
     private boolean isFavourite;
 
-    public RatesItem(String name, String rate, String primaryCurrency, boolean isFavourite) {
+    public RatesItem(String name, Double rate, String fullName, int flag) {
         this.name = name;
         this.rate = rate;
-        this.primaryCurrency = primaryCurrency;
-        this.isFavourite = isFavourite;
+        this.fullName = fullName;
+        this.flag = flag;
+        this.isFavourite = false;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getRate() {
+    public Double getRate() {
         return rate;
     }
 
-    public String getPrimaryCurrency() {
-        return primaryCurrency;
+    public String getFullName() {
+        return fullName;
+    }
+
+    public int getFlag() {
+        return flag;
     }
 
     public boolean isFavourite() {
         return isFavourite;
+    }
+
+    public void setFavourite(boolean favourite) {
+        isFavourite = favourite;
     }
 }

@@ -1,11 +1,9 @@
 package rise_mike.finance;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -18,7 +16,14 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Rates extends AppCompatActivity {
 
@@ -33,19 +38,15 @@ public class Rates extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        ListView ratesList = findViewById(R.id.listView);
-        queue.add(getRatesData(ratesList, "USD"));
-
-        //ratesList.add(new RatesItem("USD", "United States Dollar", R.drawable.usa, "27.00"));
-        //ratesList.add(new RatesItem("USD", "United States Dollar", R.drawable.usa, "27.00"));
-
-
+        ListView ratesListView = findViewById(R.id.listView);
+        queue.add(getRatesData(ratesListView, "USD"));
     }
 
     public StringRequest getRatesData(ListView ratesListView, String currency) {
-
         List<RatesItem> ratesList = new ArrayList<>();
-        RatesAdapter ratesAdapter = new RatesAdapter(this, ratesList);
+        RatesAdapter ratesAdapter = new RatesAdapter(this, ratesList, currency);
+        Map<String, String> fullNameMap = setCurrencyExtraInfo(R.raw.currency_full_name_list);
+        Map<String, String> flagMap = setCurrencyExtraInfo(R.raw.currency_flag_list);
         String url = "https://v3.exchangerate-api.com/bulk/eea141b9e02d415609d257a1/";
 
         return new StringRequest(Request.Method.GET,
@@ -59,9 +60,12 @@ public class Rates extends AppCompatActivity {
                             rates = rates.replaceAll("[\"{}]", "");
                             String[] ratesArray = rates.split(",");
                             for (String elem : ratesArray) {
-                                String[] currencyAndRate = elem.split(":");
-                                if (!currencyAndRate[0].equals(currency)) {
-                                    ratesList.add(new RatesItem(currencyAndRate[0], currencyAndRate[1], "to 1 " + currency, false));
+                                String[] str = elem.split(":");
+                                if (!str[0].equals(currency)) {
+                                    ratesList.add(new RatesItem(str[0], Double.parseDouble(str[1]),
+                                            fullNameMap.get(str[0]),
+                                            getResources().getIdentifier(flagMap.get(str[0]),
+                                                    "drawable", getPackageName())));
                                 }
                             }
                             ratesListView.setAdapter(ratesAdapter);
@@ -76,5 +80,22 @@ public class Rates extends AppCompatActivity {
                         "Something goes wrong!", Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    public Map<String, String> setCurrencyExtraInfo(int resource) {
+        Map<String, String> map = new HashMap<>();
+        String line;
+        InputStream inputStream = getResources().openRawResource(resource);
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+        try {
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] str = line.split(":");
+                map.put(str[0], str[1]);
+            }
+            inputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return map;
     }
 }
