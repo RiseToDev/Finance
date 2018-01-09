@@ -1,0 +1,3 @@
+AED:United Arab Emirates dirham:flag_united_arab_emirates
+AMD:Armenian dram:flag_armenia
+ANG:Netherlands Antillean guilder:flag_curacao

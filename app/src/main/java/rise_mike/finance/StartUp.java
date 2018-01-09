@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
+import rise_mike.finance.main.MainActivity;
+
 /**
  * Created by Mike on 23.12.2017.
  */

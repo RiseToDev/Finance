@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/app_background"
     android:orientation="vertical"
-    tools:context="rise_mike.finance.Rates">
+    tools:context="rise_mike.finance.rates.Rates">
 
     <include
         android:id="@+id/toolbar_rates"

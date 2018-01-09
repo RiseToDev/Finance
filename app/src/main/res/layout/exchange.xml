@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="rise_mike.finance.Exchange">
+    tools:context="rise_mike.finance.exchange.Exchange">
 
 </android.support.constraint.ConstraintLayout>
