@@ -10,11 +10,10 @@ public class CurrencyInformation {
     private String currencyIcon;
     private String currencyRate;
 
-    public CurrencyInformation(String currencyAbbreviation, String currencyFullName, String currencyIcon, String currencyRate) {
+    public CurrencyInformation(String currencyAbbreviation, String currencyFullName, String currencyIcon) {
         this.currencyAbbreviation = currencyAbbreviation;
         this.currencyFullName = currencyFullName;
         this.currencyIcon = currencyIcon;
-        this.currencyRate = currencyRate;
     }
 
     public String getCurrencyAbbreviation() {

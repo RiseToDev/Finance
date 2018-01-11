@@ -13,8 +13,12 @@ public final class CurrencyAPI {
     private String KEY = "eea141b9e02d415609d257a1/";
 
 
-    public String getAPILink(String toCurrency){
+    public String getRatesLink(String toCurrency){
         return this.LINK + this.KEY + toCurrency;
+    }
+
+    public String getExchangeLink(String toCurrency){
+        return "";
     }
 
 }

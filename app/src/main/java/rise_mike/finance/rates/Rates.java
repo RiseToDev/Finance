@@ -25,14 +25,10 @@ public class Rates extends AppCompatActivity {
 
 
         ratesListView = findViewById(R.id.listView);
-        DataCollaboration dataColl = new DataCollaboration(this);
-        dataColl.execute();
 
-        ArrayList<CurrencyInformation> ratesList = dataColl.getInfoArray();
+        new DataCollaboration(this).getRatesData(ratesListView);
 
-        RatesAdapter ra = new RatesAdapter(this, ratesList);
 
-        ratesListView.setAdapter(ra);
     }
 
 }
