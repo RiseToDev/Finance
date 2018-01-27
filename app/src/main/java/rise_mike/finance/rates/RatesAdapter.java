@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import rise_mike.finance.CurrencyInformation;
@@ -33,7 +34,7 @@ public class RatesAdapter extends BaseAdapter {
         TextView currencyFullName;
         ImageView currencyIcon;
         TextView currencyRate;
-       // ImageButton isFavourite_button;
+        // ImageButton isFavourite_button;
     }
 
     public RatesAdapter(Context location, List<CurrencyInformation> fullRatesInformation) {
@@ -63,7 +64,7 @@ public class RatesAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         CurrencyInformation ratesItem = (CurrencyInformation) getItem(position);
         ViewHolder viewHolder;
-
+        DecimalFormat round = new DecimalFormat(".##");
         if (convertView == null) {
             LayoutInflater customListView = (LayoutInflater)
                     location.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -73,7 +74,8 @@ public class RatesAdapter extends BaseAdapter {
             viewHolder.currencyAbbreviation = convertView.findViewById(R.id.currency_abbreviation);
             viewHolder.currencyFullName = convertView.findViewById(R.id.currency_full_name);
             viewHolder.currencyRate = convertView.findViewById(R.id.currency_rate);
-           // viewHolder.isFavourite_button = convertView.findViewById(R.id.favourite_button);
+            // viewHolder.isFavourite_button = convertView.findViewById(R.id.favourite_button);
+
 
             convertView.setTag(viewHolder);
         } else {
@@ -82,7 +84,10 @@ public class RatesAdapter extends BaseAdapter {
         //viewHolder.currencyIcon.setText(ratesItem.getCurrencyAbbreviation());
         viewHolder.currencyAbbreviation.setText(ratesItem.getCurrencyAbbreviation());
         viewHolder.currencyFullName.setText(ratesItem.getCurrencyFullName());
-        viewHolder.currencyRate.setText(ratesItem.getCurrencyRate());
+
+        Double rate = Math.round(Double.parseDouble(ratesItem.getCurrencyRate()) * 100.0) / 100.0;
+        viewHolder.currencyRate.setText(rate.toString());
+
         /*viewHolder.isFavourite_button.setOnClickListener(view -> {
             ratesItem.setFavourite(!ratesItem.isFavourite());
         });*/
