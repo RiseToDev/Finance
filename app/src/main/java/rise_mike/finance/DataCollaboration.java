@@ -30,9 +30,7 @@ import rise_mike.finance.rates.RatesAdapter;
 
 public final class DataCollaboration<T> {
     private Context location;
-    private String buf;
     private ArrayList<CurrencyInformation> infoArray = new ArrayList<>();
-    private ArrayList<String> ratesArray = new ArrayList<>();
 
     public DataCollaboration(Context location) {
         this.location = location;
@@ -54,7 +52,7 @@ public final class DataCollaboration<T> {
             while ((txtLine = bufferedReader.readLine()) != null) {
                 String[] strSplit = txtLine.split(":");
                 this.infoArray.add(new CurrencyInformation(strSplit[0], strSplit[1], strSplit[2]));
-                //Abbreviation, Fullname, Icon
+                //Abbreviation, Full name, Icon
             }
             StreamReader.close();
         } catch (IOException e) {
