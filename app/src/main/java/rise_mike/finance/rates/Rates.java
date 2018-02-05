@@ -1,52 +1,39 @@
 package rise_mike.finance.rates;
 
 import android.os.Bundle;
+import android.provider.Telephony;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 
-import java.sql.Array;
-import java.util.ArrayList;
+import java.util.List;
 
-import rise_mike.finance.CurrencyInformation;
 import rise_mike.finance.DataCollaboration;
 import rise_mike.finance.R;
 
 public class Rates extends AppCompatActivity {
-    private ListView ratesListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.rates);
+
         Toolbar toolbar = findViewById(R.id.toolbar_rates);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        Spinner sortSpinner = findViewById(R.id.sort_spinner);
 
-        ratesListView = findViewById(R.id.listView);
+        String[] sortSpinnerArray = {"Alphabet", "Favourites first", "Popularity"};
 
-        new DataCollaboration(this).getRatesData(ratesListView);
+        ArrayAdapter<String> sortSpinnerAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, sortSpinnerArray);
+        sortSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sortSpinner.setAdapter(sortSpinnerAdapter);
 
-        String[] sortSpinnerArray = new String[]{
-                "Alphabet",
-                "Favourites first",
-                "Popularity"
-        };
-
-        Spinner spinner = findViewById(R.id.sort_spinner);
-// Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                R.layout.rates_sort_spinner_item, sortSpinnerArray);
-// Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(R.layout.rates_sort_spinner_item);
-// Apply the adapter to the spinner
-        spinner.setAdapter(adapter);
-
-
+        ListView ratesListView = findViewById(R.id.listView);
+        new DataCollaboration<ListView>(this).getRatesData(ratesListView);
     }
-
 }

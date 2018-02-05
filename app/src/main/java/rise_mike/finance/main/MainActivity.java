@@ -25,12 +25,9 @@ import rise_mike.finance.rates.Rates;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private ActionBarDrawerToggle toggle;
-    private ListView currencyListView;
-    private String url = "https://v3.exchangerate-api.com/bulk/eea141b9e02d415609d257a1/USD";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -38,18 +35,16 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        toggle = new ActionBarDrawerToggle(this, drawer,
-                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         CircleButton ratesButton = findViewById(R.id.rates_button);
         ratesButton.setOnClickListener(view -> {
             Intent intent = new Intent(this, Rates.class);
             startActivity(intent);
         });
-
     }
 
 
@@ -78,9 +73,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (toggle.onOptionsItemSelected(item)) {
-            return true;
-        } else if (id == R.id.action_settings) {
+        if (id == R.id.action_settings) {
             return true;
         }
 

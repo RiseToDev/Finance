@@ -8,23 +8,21 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
+
         <activity
-            android:name=".StartUp"
-            android:theme="@style/AppTheme.StartUp"
-            android:screenOrientation="user">
+            android:name=".main.MainActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
 
-        <activity
-            android:name=".main.MainActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="user">
         </activity>
 
         <activity
@@ -32,6 +30,7 @@
             android:label="@string/rates"
             android:parentActivityName=".main.MainActivity"
             android:screenOrientation="user">
+
         </activity>
 
     </application>
