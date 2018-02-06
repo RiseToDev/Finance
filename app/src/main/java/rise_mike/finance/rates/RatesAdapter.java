@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Locale;
 
 import rise_mike.finance.CurrencyInformation;
+import rise_mike.finance.DataCollaboration;
 import rise_mike.finance.R;
 
 /**
@@ -83,9 +84,14 @@ public class RatesAdapter extends BaseAdapter {
         viewHolder.currencyIcon.setImageResource(location.getResources().getIdentifier(ratesItem.getCurrencyIcon(), "drawable", location.getPackageName()));
         viewHolder.currencyAbbreviation.setText(ratesItem.getCurrencyAbbreviation());
         viewHolder.currencyFullName.setText(ratesItem.getCurrencyFullName());
+        viewHolder.currencyRate.setText(new DataCollaboration(location).getRound(ratesItem.getCurrencyRate()));
 
-        Double rate = Math.round(Double.parseDouble(ratesItem.getCurrencyRate()) * 100.0) / 100.0;
-        viewHolder.currencyRate.setText(rate.toString());
+
+
+
+
+
+
         viewHolder.isFavouriteButton.setImageResource(R.drawable.ic_fav_button_on);
         return convertView;
     }

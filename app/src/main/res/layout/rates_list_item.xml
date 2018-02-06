@@ -18,12 +18,12 @@
     <TextView
         android:id="@+id/currency_abbreviation"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="10dp"
         android:includeFontPadding="false"
         android:textColor="@color/primaryDark"
         android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="@+id/currency_icon"
         app:layout_constraintStart_toEndOf="@+id/currency_icon"
         app:layout_constraintTop_toTopOf="@+id/currency_icon"
         tools:text="EUR" />
@@ -31,12 +31,12 @@
     <TextView
         android:id="@+id/currency_full_name"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="69dp"
         android:includeFontPadding="false"
         android:textColor="@color/primaryDark"
         android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/currency_abbreviation"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/currency_abbreviation"
         tools:text="Euro" />
 
@@ -56,17 +56,13 @@
         android:id="@+id/currency_rate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="75dp"
         android:textColor="@color/primaryDark"
         android:textSize="22sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/currency_abbreviation"
-        app:layout_constraintStart_toStartOf="@+id/guideline8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/favourite_button"
+        app:layout_constraintStart_toEndOf="@+id/currency_abbreviation"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="1234.45" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="260dp" />
 
 </android.support.constraint.ConstraintLayout>
