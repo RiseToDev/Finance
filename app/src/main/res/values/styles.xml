@@ -2,8 +2,7 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->s
-        <item name="colorPrimary">@color/primaryDark</item>
+        <!-- Customize your theme here. -->
         <item name="colorPrimaryDark">@color/primaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
@@ -12,8 +11,8 @@
         <item name="android:windowBackground">@drawable/splash_screen</item>
     </style>
 
-    <style name="AppTheme.Toolbar" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
-        <item name="android:background">@color/primaryDark</item>
+    <style name="PopupMenu" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:colorBackground">@color/primaryDark</item>
     </style>
 
 </resources>
