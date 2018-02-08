@@ -5,5 +5,6 @@
     android:layout_height="match_parent"
     android:padding="10dp"
     android:textSize="18dp"
+    android:drawableRight="@drawable/ic_action_sort"
     android:textColor="#ffff" />
 

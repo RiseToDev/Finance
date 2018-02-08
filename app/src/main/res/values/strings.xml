@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Finance</string>
-
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_settings">Action settings</string>
@@ -9,4 +8,5 @@
     <string name="rates">Rates</string>
     <string name="exchange">Exchange</string>
     <string name="settings">Settings</string>
+
 </resources>

@@ -19,6 +19,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import rise_mike.finance.rates.RatesAdapter;
@@ -29,46 +30,47 @@ import rise_mike.finance.rates.RatesAdapter;
  * Class for using different methods and functions for collaboration with data on the device
  */
 
-public final class DataCollaboration<T> {
+public final class DataCollaboration {
     private Context location;
-    private ArrayList<CurrencyInformation> infoArray = new ArrayList<>();
+    private List<CurrencyInformation> infoArray;
 
     public DataCollaboration(Context location) {
         this.location = location;
+        infoArray = new ArrayList<>();
     }
 
-    public ArrayList<CurrencyInformation> getInfoArray() {
-        return this.infoArray;
+    public List<CurrencyInformation> getInfoArray() {
+        return infoArray;
     }
 
     /**
      * Read data (for example: UAH:Ukrainian hryvnia:flag_ukraine) and fill the ArrayList.
      * Return ArrayList.
      */
-    public void getCurrencyInformation() {
+    public DataCollaboration getCurrencyInformation() {
         String txtLine;
         InputStream StreamReader = location.getResources().openRawResource(R.raw.currency_information);
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(StreamReader));
         try {
             while ((txtLine = bufferedReader.readLine()) != null) {
                 String[] strSplit = txtLine.split(":");
-                this.infoArray.add(new CurrencyInformation(strSplit[0], strSplit[1], strSplit[2]));
+                infoArray.add(new CurrencyInformation(strSplit[0], strSplit[1], strSplit[2]));
                 //Abbreviation, Full name, Icon
             }
             StreamReader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return this;
     }
 
     /**
      * Get data from API Link.
      * Return String for future editing and parsing.
      */
-    public void getRatesData(T buf) {
+    public void getRatesData(Object buf) {
         if (buf instanceof ListView) {
             ListView ratesListView = (ListView) buf;
-            getCurrencyInformation();
             RequestQueue getJSONRequest = Volley.newRequestQueue(location);
             getJSONRequest.add(new StringRequest(Request.Method.GET, new CurrencyAPI().getRatesLink("USD"),
                     response -> {
@@ -91,6 +93,10 @@ public final class DataCollaboration<T> {
         }
     }
 
+    public DataCollaboration reverseInfoArray() {
+        Collections.reverse(infoArray);
+        return this;
+    }
 
     /**
      * To round the values of the rate of each currency

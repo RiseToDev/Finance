@@ -6,31 +6,23 @@
         android:id="@+id/sort_button"
         android:checked="true"
         android:icon="@drawable/ic_action_sort"
-        android:title="Sort"
+        android:title="Sorting direction"
         app:showAsAction="ifRoom" />
 
-    <item
-        android:title="Sorting types"
-        app:showAsAction="never">
-
-        <menu>
-            <group android:checkableBehavior="single">
-                <item
-                    android:id="@+id/alphabet_sort"
-                    android:checked="true"
-                    android:title="Alphabet"
-                    app:showAsAction="never" />
-                <item
-                    android:id="@+id/favourites_sort"
-                    android:title="Favourites first"
-                    app:showAsAction="never" />
-                <item
-                    android:id="@+id/popularity_sort"
-                    android:title="Popularity"
-                    app:showAsAction="never" />
-            </group>
-        </menu>
-
-    </item>
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/alphabet_sort"
+            android:checked="true"
+            android:title="Alphabet"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/favourites_sort"
+            android:title="Favourites first"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/popularity_sort"
+            android:title="Popularity"
+            app:showAsAction="never" />
+    </group>
 
 </menu>

@@ -9,14 +9,23 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
+
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
+import rise_mike.finance.CurrencyInformation;
 import rise_mike.finance.DataCollaboration;
 import rise_mike.finance.R;
 
 public class Rates extends AppCompatActivity {
+
+    private ListView ratesListView;
+    private DataCollaboration data;
+    private String sortType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,16 +43,18 @@ public class Rates extends AppCompatActivity {
         ArrayAdapter<String> sortSpinnerAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, sortSpinnerArray);
         sortSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        sortSpinner.setAdapter(sortSpinnerAdapter);
+        sortSpinner.setAdapter(sortSpinnerAdapter);*/
 
-        ListView ratesListView = findViewById(R.id.listView);
-        new DataCollaboration<ListView>(this).getRatesData(ratesListView);*/
+        ratesListView = findViewById(R.id.listView);
+        data = new DataCollaboration(this);
+        data.getCurrencyInformation().getRatesData(ratesListView);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.rates_toolbar_menu, menu);
+        sortType = "Alphabet sort";
         return true;
     }
 
@@ -55,13 +66,20 @@ public class Rates extends AppCompatActivity {
             if (item.isChecked()) {
                 item.setIcon(R.drawable.ic_action_sort_reverse);
                 item.setChecked(false);
+                if (sortType.equals("Alphabet sort")) {
+                    data.reverseInfoArray().getRatesData(ratesListView);
+                }
             } else {
                 item.setIcon(R.drawable.ic_action_sort);
                 item.setChecked(true);
+                if (sortType.equals("Alphabet sort")) {
+                    data.reverseInfoArray().getRatesData(ratesListView);
+                }
             }
             Toast.makeText(this, "sort_button clicked", Toast.LENGTH_LONG).show();
             return true;
         } else if (id == R.id.alphabet_sort) {
+            sortType = "Alphabet sort";
             if (item.isChecked()) {
                 item.setChecked(false);
             } else {
@@ -70,6 +88,7 @@ public class Rates extends AppCompatActivity {
             Toast.makeText(this, "alphabet_sort clicked", Toast.LENGTH_LONG).show();
             return true;
         } else if (id == R.id.favourites_sort) {
+            sortType = "Favourites sort";
             if (item.isChecked()) {
                 item.setChecked(false);
             } else {
@@ -78,6 +97,7 @@ public class Rates extends AppCompatActivity {
             Toast.makeText(this, "favourites_sort clicked", Toast.LENGTH_LONG).show();
             return true;
         } else if (id == R.id.popularity_sort) {
+            sortType = "Popularity sort";
             if (item.isChecked()) {
                 item.setChecked(false);
             } else {
