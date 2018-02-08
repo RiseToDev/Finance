@@ -102,16 +102,18 @@ public final class DataCollaboration {
      * To round the values of the rate of each currency
      */
     public String getRound(String value) {
-        String[] numberSplit = value.split("\\.");
-        Double buf = Double.parseDouble(numberSplit[1]);
-        if (buf == 0) {
-            return numberSplit[0];
-        } else {
-            buf = Double.parseDouble(value);
-            DecimalFormat df = new DecimalFormat("#.###");
-            buf = Double.valueOf(df.format(buf));
-            return buf.toString();
-        }
+        if (value.contains(".")) {
+            String[] numberSplit = value.split("\\.");
+            Double buf = Double.parseDouble(numberSplit[1]);
+            if (buf == 0) {
+                return numberSplit[0];
+            } else {
+                buf = Double.parseDouble(value);
+                DecimalFormat df = new DecimalFormat("#.###");
+                buf = Double.valueOf(df.format(buf));
+                return buf.toString();
+            }
+        } else return value;
     }
 }
 
