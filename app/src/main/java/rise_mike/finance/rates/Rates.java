@@ -30,6 +30,7 @@ public class Rates extends AppCompatActivity {
 
     private ListView ratesListView;
     private DataCollaboration data;
+    private String primaryCurrency;
     private String sortType;
 
     @Override
@@ -52,7 +53,8 @@ public class Rates extends AppCompatActivity {
 
         ratesListView = findViewById(R.id.rates_list_view);
         data = new DataCollaboration(this);
-        data.getCurrencyInformation().getRatesData(ratesListView);
+        primaryCurrency = "USD";
+        data.getCurrencyInformation().getRatesData(ratesListView, primaryCurrency);
     }
 
     @Override
@@ -101,7 +103,9 @@ public class Rates extends AppCompatActivity {
             abbreviationListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    item.setTitle(abbreviationListView.getItemAtPosition(i).toString());
+                    primaryCurrency = abbreviationListView.getItemAtPosition(i).toString();
+                    data.getRatesData(ratesListView, primaryCurrency);
+                    item.setTitle(primaryCurrency);
                     alertDialog.dismiss();
                 }
             });
@@ -125,13 +129,13 @@ public class Rates extends AppCompatActivity {
                 item.setIcon(R.drawable.ic_action_sort_reverse);
                 item.setChecked(false);
                 if (sortType.equals("Alphabet sort")) {
-                    //data.reverseInfoArray().getRatesData(ratesListView);
+                    data.reverseInfoArray().getRatesData(ratesListView, primaryCurrency);
                 }
             } else {
                 item.setIcon(R.drawable.ic_action_sort);
                 item.setChecked(true);
                 if (sortType.equals("Alphabet sort")) {
-                    //data.reverseInfoArray().getRatesData(ratesListView);
+                    data.reverseInfoArray().getRatesData(ratesListView, primaryCurrency);
                 }
             }
             Toast.makeText(this, "sort_button clicked", Toast.LENGTH_LONG).show();

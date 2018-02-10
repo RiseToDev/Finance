@@ -68,11 +68,11 @@ public final class DataCollaboration {
      * Get data from API Link.
      * Return String for future editing and parsing.
      */
-    public void getRatesData(Object buf) {
+    public void getRatesData(Object buf, String toCurrency) {
         if (buf instanceof ListView) {
             ListView ratesListView = (ListView) buf;
             RequestQueue getJSONRequest = Volley.newRequestQueue(location);
-            getJSONRequest.add(new StringRequest(Request.Method.GET, new CurrencyAPI().getRatesLink("USD"),
+            getJSONRequest.add(new StringRequest(Request.Method.GET, new CurrencyAPI().getRatesLink(toCurrency.toUpperCase()),
                     response -> {
                         try {
                             JSONObject jObject = new JSONObject(response);
