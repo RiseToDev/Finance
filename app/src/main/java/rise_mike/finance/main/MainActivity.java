@@ -20,6 +20,7 @@ import java.util.ArrayList;
 
 import at.markushi.ui.CircleButton;
 import rise_mike.finance.R;
+import rise_mike.finance.exchange.Exchange;
 import rise_mike.finance.rates.Rates;
 
 public class MainActivity extends AppCompatActivity

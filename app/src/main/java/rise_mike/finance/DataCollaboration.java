@@ -36,7 +36,6 @@ public final class DataCollaboration {
 
     public DataCollaboration(Context location) {
         this.location = location;
-        infoArray = new ArrayList<>();
     }
 
     public List<CurrencyInformation> getInfoArray() {
@@ -48,6 +47,7 @@ public final class DataCollaboration {
      * Return ArrayList.
      */
     public DataCollaboration getCurrencyInformation() {
+        infoArray = new ArrayList<>();
         String txtLine;
         InputStream StreamReader = location.getResources().openRawResource(R.raw.currency_information);
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(StreamReader));

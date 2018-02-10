@@ -68,10 +68,9 @@ public class RatesAdapter extends BaseAdapter {
         ViewHolder viewHolder;
         DecimalFormat round = new DecimalFormat(".##");
         if (convertView == null) {
-            LayoutInflater customListView = (LayoutInflater)
-                    location.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = customListView.inflate(R.layout.rates_list_item, parent, false);
             viewHolder = new ViewHolder();
+            LayoutInflater inflater = LayoutInflater.from(location);
+            convertView = inflater.inflate(R.layout.rates_list_item, parent, false);
             viewHolder.currencyIcon = convertView.findViewById(R.id.currency_icon);
             viewHolder.currencyAbbreviation = convertView.findViewById(R.id.currency_abbreviation);
             viewHolder.currencyFullName = convertView.findViewById(R.id.currency_full_name);
@@ -85,11 +84,7 @@ public class RatesAdapter extends BaseAdapter {
         viewHolder.currencyAbbreviation.setText(ratesItem.getCurrencyAbbreviation());
         viewHolder.currencyFullName.setText(ratesItem.getCurrencyFullName());
         viewHolder.currencyRate.setText(new DataCollaboration(location).getRound(ratesItem.getCurrencyRate()));
-
-
-
-
-
+        //viewHolder.currencyRate.setText(ratesItem.getCurrencyRate());
 
 
         viewHolder.isFavouriteButton.setImageResource(R.drawable.ic_fav_button_on);
