@@ -2,6 +2,8 @@ package rise_mike.finance.rates;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -32,6 +34,7 @@ public class Rates extends AppCompatActivity {
     private DataCollaboration data;
     private String primaryCurrency;
     private String sortType;
+    private SwipeRefreshLayout ratesListRefresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +58,21 @@ public class Rates extends AppCompatActivity {
         data = new DataCollaboration(this);
         primaryCurrency = "USD";
         data.getCurrencyInformation().getRatesData(ratesListView, primaryCurrency);
+
+        ratesListRefresh = findViewById(R.id.rates_list_refresh);
+        ratesListRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        data.getCurrencyInformation().getRatesData(ratesListView, primaryCurrency);
+                        ratesListRefresh.setRefreshing(false);
+                    }
+                }, 1500);
+            }
+        });
+
     }
 
     @Override
@@ -69,7 +87,7 @@ public class Rates extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.change_primary_currency) {
+        if (id == R.id.change_primary_currency_menu_item) {
 
             LayoutInflater inflater = getLayoutInflater();
             View alertDialogView = inflater.inflate(R.layout.searchable_list, null);
@@ -124,7 +142,18 @@ public class Rates extends AppCompatActivity {
             });
 
             return true;
-        } else if (id == R.id.sort_button) {
+        } else if (id == R.id.refresh_menu_item) {
+            ratesListRefresh.setRefreshing(true);
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    data.getCurrencyInformation().getRatesData(ratesListView, primaryCurrency);
+                    ratesListRefresh.setRefreshing(false);
+                }
+            }, 1500);
+
+            return true;
+        } else if (id == R.id.sort_menu_item) {
             if (item.isChecked()) {
                 item.setIcon(R.drawable.ic_action_sort_reverse);
                 item.setChecked(false);

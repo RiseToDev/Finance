@@ -3,16 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/change_primary_currency"
+        android:id="@+id/change_primary_currency_menu_item"
         android:title="USD"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
 
     <item
-        android:id="@+id/sort_button"
+        android:id="@+id/refresh_menu_item"
+        android:icon="@drawable/ic_action_refresh"
+        android:title="Refresh data"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/sort_menu_item"
         android:checked="true"
         android:icon="@drawable/ic_action_sort"
-        android:title="Sorting direction"
-        app:showAsAction="ifRoom" />
+        android:title="Swap sorting direction"
+        app:showAsAction="always" />
 
     <group android:checkableBehavior="single">
         <item
